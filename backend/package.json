@@ -1,0 +1,16 @@
+{
+  "name": "smartcafe-backend",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "@types/jest": "^27.5.2",
+    "@types/node": "^16.18.68",
+    "typescript": "^4.9.5",
+    "smartcafe-common": "1.0.0"
+
+  },
+  "scripts": {
+    "build": "yarn tsc"
+  }
+}

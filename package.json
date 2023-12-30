@@ -1,0 +1,8 @@
+{
+  "name": "smartcafe",
+  "version": "1.0.0",
+  "private": true,
+  "workspaces": ["common", "backend", "frontend"],
+  "dependencies": {
+  }
+}
