@@ -4,7 +4,8 @@ import {Request} from "./Request";
 export interface MakeBooking extends Request<MakeBookingResponse> {
     readonly customerName: string
     readonly date: string
-    readonly time: string
+    readonly startTime: string
+    readonly endTime: string
     readonly seats: number
     readonly tableType?: TableType
 }
