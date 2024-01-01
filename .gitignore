@@ -2,5 +2,6 @@
 /backend/node_modules/
 /common/node_modules/
 /common/dist/
-/node_modules/
 /.idea/shelf/
+/node_modules/flatted/
+.DS_Store
