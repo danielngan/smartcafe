@@ -1,4 +1,7 @@
 /node_modules/
 /backend/node_modules/
+/backend/tests-reports/
+/backend/dist/
 /common/node_modules/
 /common/dist/
+/common/tests-reports/
