@@ -65,7 +65,13 @@ export class MemoryRepository implements Repository {
     }
 
     async getAvailableTables(date: string, startTime: string, endTime: string) : Promise<Table[]> {
-        return [];
+        const tempTableMap = new Map(this.tableMap);
+        this.bookingMap.forEach((booking) => {
+            if (booking.date === date && (((booking.startTime > startTime) && (booking.endTime > endTime) && (booking.startTime < endTime)) || ((booking.startTime < startTime) && (booking.endTime < endTime) && (startTime < booking.endTime)) || ((startTime < booking.startTime) && (endTime > booking.endTime)) || ((startTime > booking.startTime) && (endTime < booking.endTime)))) {
+                tempTableMap.delete(booking.tableId)
+            }
+        })
+        return Array.from(tempTableMap.values());
     }
 
 
