@@ -2,6 +2,6 @@ export interface Request<Resp> {
 
 }
 
-export interface RequestExecutor {
-    execute <T extends Request<Resp>, Resp>(request: T): Promise<Resp>
+export interface RequestExecutor<Req extends Request<Resp>, Resp> {
+    execute(request: Req): Promise<Resp>
 }

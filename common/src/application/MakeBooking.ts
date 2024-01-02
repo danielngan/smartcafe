@@ -1,7 +1,8 @@
 import {TableType} from "../domain/Table";
 import {Request} from "./Request";
+import {Booking} from "../domain/Booking";
 
-export interface MakeBooking extends Request<MakeBookingResponse> {
+export interface MakeBooking extends Request<Booking | undefined> {
     readonly customerName: string
     readonly date: string
     readonly startTime: string
@@ -10,6 +11,3 @@ export interface MakeBooking extends Request<MakeBookingResponse> {
     readonly tableType?: TableType
 }
 
-export interface MakeBookingResponse {
-    readonly tableId?: string
-}

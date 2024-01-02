@@ -5,8 +5,30 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0f2bf494-cefa-4fc1-945f-8e26a5afb61e" name="Changes" comment="finished the application handlers.">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/src/application/CreateTableHandler.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/src/application/HandlerCollection.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/src/index.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/common/src/application/CreateTable.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/dist/Repository.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/dist/application/GetAllBookingsHandler.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/dist/application/GetAllTablesHandler.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/dist/application/GetAvailableTablesByTimeHandler.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/dist/application/GetBookingsByCustomerHandler.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/dist/application/MakeBookingHandler.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/dist/application/RequestHandler.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/dist/infrastructure/MemoryRepository.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/dist/repository/Repository.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/backend/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/application/GetAvailableTablesByTimeHandler.ts" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/application/GetAvailableTablesByTimeHandler.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/application/GetBookingsByCustomerHandler.ts" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/application/GetBookingsByCustomerHandler.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/application/MakeBookingHandler.ts" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/application/MakeBookingHandler.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/application/RequestHandler.ts" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/application/RequestHandler.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/tsconfig.json" beforeDir="false" afterPath="$PROJECT_DIR$/backend/tsconfig.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/src/application/MakeBooking.ts" beforeDir="false" afterPath="$PROJECT_DIR$/common/src/application/MakeBooking.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/src/application/Request.ts" beforeDir="false" afterPath="$PROJECT_DIR$/common/src/application/Request.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/tsconfig.json" beforeDir="false" afterPath="$PROJECT_DIR$/common/tsconfig.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -58,34 +80,61 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/Users/daniel/IdeaProjects/smartcafe/common&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_interpreter_path&quot;: &quot;node&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;yarn&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Global Libraries&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;settings.nodejs&quot;,
-    &quot;ts.external.directory.path&quot;: &quot;/Users/daniel/IdeaProjects/smartcafe/node_modules/typescript/lib&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "main",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "/Users/daniel/IdeaProjects/smartcafe/common",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_interpreter_path": "node",
+    "nodejs_package_manager_path": "yarn",
+    "npm.backend > clean.executor": "Run",
+    "npm.backend > start.executor": "Run",
+    "npm.build (1).executor": "Run",
+    "npm.build.executor": "Run",
+    "npm.clean.executor": "Run",
+    "npm.common > clean-build.executor": "Run",
+    "project.structure.last.edited": "Global Libraries",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "settings.nodejs",
+    "ts.external.directory.path": "/Users/daniel/IdeaProjects/smartcafe/node_modules/typescript/lib",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/common" />
       <recent name="$PROJECT_DIR$/backend" />
     </key>
   </component>
-  <component name="RunManager" selected="npm.build (1)">
+  <component name="RunManager" selected="npm.backend &gt; start">
+    <configuration name="backend &gt; clean" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/backend/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="clean" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <configuration name="backend &gt; start" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/backend/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="start" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
     <configuration name="build (1)" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
       <package-json value="$PROJECT_DIR$/backend/package.json" />
       <command value="run" />
@@ -106,7 +155,7 @@
       <envs />
       <method v="2" />
     </configuration>
-    <configuration name="clean-build" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+    <configuration name="common &gt; clean-build" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
       <package-json value="$PROJECT_DIR$/common/package.json" />
       <command value="run" />
       <scripts>
@@ -116,22 +165,13 @@
       <envs />
       <method v="2" />
     </configuration>
-    <configuration name="clean" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
-      <package-json value="$PROJECT_DIR$/common/package.json" />
-      <command value="run" />
-      <scripts>
-        <script value="clean" />
-      </scripts>
-      <node-interpreter value="project" />
-      <envs />
-      <method v="2" />
-    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="npm.backend &gt; start" />
         <item itemvalue="npm.build (1)" />
+        <item itemvalue="npm.common &gt; clean-build" />
+        <item itemvalue="npm.backend &gt; clean" />
         <item itemvalue="npm.build" />
-        <item itemvalue="npm.clean-build" />
-        <item itemvalue="npm.clean" />
       </list>
     </recent_temporary>
   </component>
@@ -146,6 +186,7 @@
       <workItem from="1703869345782" duration="1477000" />
       <workItem from="1703870828835" duration="26648000" />
       <workItem from="1704124707650" duration="16098000" />
+      <workItem from="1704150439281" duration="17058000" />
     </task>
     <task id="LOCAL-00001" summary="initial commit">
       <option name="closed" value="true" />
@@ -187,7 +228,15 @@
       <option name="project" value="LOCAL" />
       <updated>1704149485579</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="finished the application handlers.">
+      <option name="closed" value="true" />
+      <created>1704149836651</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1704149836651</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -209,7 +258,19 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="main" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
           </value>
         </entry>
       </map>

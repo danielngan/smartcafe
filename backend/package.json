@@ -1,16 +1,22 @@
 {
   "name": "smartcafe-backend",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "dist/index.js",
   "license": "MIT",
   "dependencies": {
+    "@types/express": "^4.17.21",
     "@types/node": "^16.18.68",
+    "cors": "^2.8.5",
+    "express": "^4.18.2",
+    "morgan": "^1.10.0",
     "smartcafe-common": "1.0.0",
     "typescript": "^4.9.5"
   },
   "scripts": {
+    "clean": "rm -fr dist",
     "build": "yarn tsc",
-    "test": "jest"
+    "test": "jest",
+    "start": "node ./dist/index.js"
   },
   "devDependencies": {
     "@types/jest": "^29.5.11",

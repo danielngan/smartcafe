@@ -1,18 +1,14 @@
 import {RequestHandler} from "./RequestHandler";
-import {GetAllTables} from "smartcafe-common/dist/application/GetAllTables";
-import {Table} from "smartcafe-common/dist/domain/Table";
 import {Repository} from "../repository/Repository";
-import {GetAvailableTablesByTime} from "smartcafe-common/dist/application/GetAvailableTablesByTime";
-import {GetBookingsByCustomer} from "smartcafe-common/dist/application/GetBookingsByCustomer";
 import {Booking} from "smartcafe-common/dist/domain/Booking";
-import {MakeBooking, MakeBookingResponse} from "smartcafe-common/dist/application/MakeBooking";
+import {MakeBooking} from "smartcafe-common/dist/application/MakeBooking";
 
-export class MakeBookingHandler extends RequestHandler<MakeBooking, MakeBookingResponse>{
+export class MakeBookingHandler extends RequestHandler<MakeBooking, Booking | undefined>{
     constructor (repository: Repository) {
         super(repository)
     }
 
-    override async execute(request: MakeBooking): Promise<MakeBookingResponse> {
+    override async execute(request: MakeBooking): Promise<Booking | undefined> {
         /*
             tablesFound = []
             get available tables with time matching the request.
@@ -41,13 +37,27 @@ export class MakeBookingHandler extends RequestHandler<MakeBooking, MakeBookingR
             .filter((table) => table.seats >= request.seats && (request.tableType === undefined || request.tableType === table.type))
 
         if (tablesFound.length == 0) {
-            return {
-                tableId: undefined
-            }
+            return undefined
         } else {
             tablesFound.sort((a, b) => (a.seats - b.seats))
+            const tableId = tablesFound[0].id
+
+            const bookingId = (await this.repository.createBooking({
+                date: request.date,
+                startTime: request.startTime,
+                endTime: request.endTime,
+                seats: request.seats,
+                tableId: tableId,
+                customerName: request.customerName
+            }))
             return {
-                tableId: tablesFound[0].id
+                id: bookingId,
+                date: request.date,
+                startTime: request.startTime,
+                endTime: request.endTime,
+                seats: request.seats,
+                tableId: tableId,
+                customerName: request.customerName
             }
         }
     }
