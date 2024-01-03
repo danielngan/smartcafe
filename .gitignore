@@ -5,3 +5,5 @@
 /.idea/shelf/
 /node_modules/flatted/
 .DS_Store
+/backend/dist/
+/backend/tests-reports/
