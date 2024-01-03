@@ -5,11 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0f2bf494-cefa-4fc1-945f-8e26a5afb61e" name="Changes" comment="Added some more ignore files">
-      <change afterPath="$PROJECT_DIR$/backend/src/infrastructure/MemoryRepository.test.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/src/repository/Repository.test.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/src/infrastructure/MongoDBRepository.test.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/src/infrastructure/MongoDBRepository.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/backend/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/infrastructure/MemoryRepository.ts" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/infrastructure/MemoryRepository.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -44,9 +44,6 @@
     &quot;assignee&quot;: &quot;danielngan&quot;
   }
 }</component>
-  <component name="GithubDefaultAccount">
-    <option name="defaultAccountId" value="2fdf0038-cda8-4cdf-992e-558b300fa701" />
-  </component>
   <component name="GithubPullRequestsUISettings">
     <option name="selectedUrlAndAccountId">
       <UrlAndAccount>
@@ -71,6 +68,7 @@
   "keyToString": {
     "Jest.MemoryRepository.executor": "Run",
     "Jest.MemoryRepository.test.ts.executor": "Coverage",
+    "Jest.MongoDBRepository.test.ts.executor": "Run",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
@@ -82,7 +80,7 @@
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs.jest.jest_package": "/Users/vincent/Github/smartcafe/backend/node_modules/jest",
+    "nodejs.jest.jest_package": "/Users/daniel/IdeaProjects/smartcafe/backend/node_modules/jest",
     "nodejs_interpreter_path": "node",
     "nodejs_package_manager_path": "yarn",
     "npm.backend > clean-build.executor": "Run",
@@ -97,7 +95,7 @@
     "project.structure.proportion": "0.0",
     "project.structure.side.proportion": "0.2",
     "settings.editor.selected.configurable": "settings.nodejs",
-    "ts.external.directory.path": "/Users/vincent/Github/smartcafe/node_modules/typescript/lib",
+    "ts.external.directory.path": "/Users/daniel/IdeaProjects/smartcafe/node_modules/typescript/lib",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -107,19 +105,7 @@
       <recent name="$PROJECT_DIR$/backend" />
     </key>
   </component>
-  <component name="RunManager" selected="npm.backend &gt; test">
-    <configuration name="MemoryRepository" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
-      <node-interpreter value="project" />
-      <jest-package value="$PROJECT_DIR$/backend/node_modules/jest" />
-      <working-dir value="$PROJECT_DIR$/backend" />
-      <envs />
-      <scope-kind value="SUITE" />
-      <test-file value="$PROJECT_DIR$/backend/src/infrastructure/MemoryRepository.test.ts" />
-      <test-names>
-        <test-name value="MemoryRepository" />
-      </test-names>
-      <method v="2" />
-    </configuration>
+  <component name="RunManager" selected="npm.backend &gt; clean-build">
     <configuration name="MemoryRepository.test.ts" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
       <node-interpreter value="project" />
       <jest-package value="$PROJECT_DIR$/backend/node_modules/jest" />
@@ -127,6 +113,15 @@
       <envs />
       <scope-kind value="TEST_FILE" />
       <test-file value="$PROJECT_DIR$/backend/src/infrastructure/MemoryRepository.test.ts" />
+      <method v="2" />
+    </configuration>
+    <configuration name="MongoDBRepository.test.ts" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
+      <node-interpreter value="project" />
+      <jest-package value="$PROJECT_DIR$/backend/node_modules/jest" />
+      <working-dir value="$PROJECT_DIR$/backend" />
+      <envs />
+      <scope-kind value="TEST_FILE" />
+      <test-file value="$PROJECT_DIR$/backend/src/infrastructure/MongoDBRepository.test.ts" />
       <method v="2" />
     </configuration>
     <configuration name="backend &gt; clean-build" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
@@ -160,7 +155,7 @@
       <method v="2" />
     </configuration>
     <list>
-      <item itemvalue="Jest.MemoryRepository" />
+      <item itemvalue="Jest.MongoDBRepository.test.ts" />
       <item itemvalue="Jest.MemoryRepository.test.ts" />
       <item itemvalue="npm.backend &gt; clean-build" />
       <item itemvalue="npm.backend &gt; test" />
@@ -168,11 +163,11 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="npm.backend &gt; test" />
         <item itemvalue="npm.backend &gt; clean-build" />
         <item itemvalue="npm.common &gt; clean-build" />
+        <item itemvalue="Jest.MongoDBRepository.test.ts" />
+        <item itemvalue="npm.backend &gt; test" />
         <item itemvalue="Jest.MemoryRepository.test.ts" />
-        <item itemvalue="Jest.MemoryRepository" />
       </list>
     </recent_temporary>
   </component>
