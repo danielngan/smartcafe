@@ -34,8 +34,6 @@ export class MemoryRepository implements Repository {
         this.tableMap.delete(id)
     }
 
-
-
     async getAllBookings(): Promise<Booking[]> {
         return Array.from(this.bookingMap.values())
     }
@@ -49,7 +47,6 @@ export class MemoryRepository implements Repository {
     }
 
     async createBooking(bookingData: Omit<Booking, "id">): Promise<string> {
-        // you need to generate an id for a booking
         const id = "" + this.nextBookingId
         this.nextBookingId++
         const booking: Booking = {
@@ -65,13 +62,13 @@ export class MemoryRepository implements Repository {
     }
 
     async getAvailableTables(date: string, startTime: string, endTime: string) : Promise<Table[]> {
-        const tempTableMap = new Map(this.tableMap);
+        const availableTables = new Map(this.tableMap);
         this.bookingMap.forEach((booking) => {
-            if (booking.date === date && (((booking.startTime > startTime) && (booking.endTime > endTime) && (booking.startTime < endTime)) || ((booking.startTime < startTime) && (booking.endTime < endTime) && (startTime < booking.endTime)) || ((startTime < booking.startTime) && (endTime > booking.endTime)) || ((startTime > booking.startTime) && (endTime < booking.endTime)))) {
-                tempTableMap.delete(booking.tableId)
+            if (booking.date === date && booking.startTime < endTime && startTime < booking.endTime) {
+                availableTables.delete(booking.tableId);
             }
         })
-        return Array.from(tempTableMap.values());
+        return Array.from(availableTables.values());
     }
 
 
