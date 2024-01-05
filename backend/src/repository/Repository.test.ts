@@ -6,13 +6,23 @@ describe('Nothing', () => {
     it('Nothing', () => {});
 });
 
-export function runRepositoryTests(repositoryFactory: () => Repository) {
+function mask<T>(value: T): T {
+    const masked: any = {...value}
+    delete masked._id
+    delete masked.__v
+    return masked as T
+}
+
+export function runRepositoryTests(
+    repositoryFactory: () => Promise<Repository>,
+    foreach: (repository: Repository) => Promise<void>) {
 
     describe('Repository', () => {
         let repository: Repository;
 
-        beforeEach(() => {
-            repository = repositoryFactory()
+        beforeEach(async () => {
+            repository = await repositoryFactory()
+            await foreach(repository)
         });
 
         test('createTable and getTableById and getAllTables', async () => {
@@ -23,8 +33,8 @@ export function runRepositoryTests(repositoryFactory: () => Repository) {
             };
             await repository.createTable(table);
             const retrievedTable = await repository.getTableById('1');
-            expect(retrievedTable).toEqual(table);
-            expect(await repository.getAllTables()).toEqual([table]);
+            expect(mask(retrievedTable)).toEqual(table);
+            expect(await repository.getAllTables()).toEqual([retrievedTable]);
             try {
                 await repository.createTable(table);
                 fail();
@@ -45,7 +55,7 @@ export function runRepositoryTests(repositoryFactory: () => Repository) {
                 seats: 6
             }
             await repository.updateTable(updatedTable);
-            expect(await repository.getTableById('1')).toEqual(updatedTable);
+            expect(mask(await repository.getTableById('1'))).toEqual(updatedTable);
             try {
                 await repository.updateTable({ ...table, id: '9' });
                 fail();
@@ -77,9 +87,9 @@ export function runRepositoryTests(repositoryFactory: () => Repository) {
             };
             const bookingId = await repository.createBooking(bookingData);
             const retrievedBooking = await repository.getBookingById(bookingId);
-            expect(retrievedBooking).toEqual({ ...bookingData, id: bookingId });
-            expect(await repository.getAllBookings()).toEqual([{ ...bookingData, id: bookingId }]);
-            expect(await repository.getBookingsByTime('2021-01-01', '12:00')).toEqual([{ ...bookingData, id: bookingId }]);
+            expect(mask(retrievedBooking)).toEqual({ ...bookingData, id: bookingId });
+            expect(await repository.getAllBookings()).toEqual([retrievedBooking]);
+            expect(await repository.getBookingsByTime('2021-01-01', '12:00')).toEqual([retrievedBooking]);
             expect(await repository.getBookingsByTime('2021-01-01', '11:00')).toEqual([]);
         });
 
@@ -135,7 +145,7 @@ export function runRepositoryTests(repositoryFactory: () => Repository) {
             await repository.createBooking(bookingData1);
             await repository.createBooking(bookingData2);
             const availableTables = await repository.getAvailableTables('2022-12-31', '12:00', '13:00');
-            expect(availableTables).toEqual([table2]);
+            expect(availableTables.map(mask)).toEqual([table2]);
         });
     });
 
